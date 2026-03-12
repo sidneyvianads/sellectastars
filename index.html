@@ -413,4 +413,203 @@ function renderMembros() {
   return `<button class="btn btn-gold" style="margin-bottom:16px;" onclick="openNovoMembro()">＋ Novo Membro</button>${cards}`;
 }
 function renderLancarInline() {
-  const membOpts = S.membros.filter(m=>m.role==='membro').map(m=>`<option value="${esc(m.id)}">${es
+  const membOpts = S.membros.filter(m=>m.role==='membro').map(m=>`<option value="${esc(m.id)}">${esc(m.nome)}</option>`).join('');
+  const mesesChips = MESES.map((m,i)=>`<div class="chip ${i===0?'active':''}" onclick="selChipInline(this,'li-meses')">${m}</div>`).join('');
+  const critChips = CRITERIOS.map(c=>`<div class="chip chip-crit" onclick="selChipInline(this,'li-criterios')" data-id="${c.id}" data-pts="${c.pts}"><span class="cc-pts">${c.pts}★</span><span>${c.label}</span></div>`).join('');
+  return `<div class="section-title" style="margin-top:4px;">⭐ Lançar Estrelas</div>
+    <div class="card">
+      <div class="form-group"><label class="form-label">MEMBRO</label><select id="li-membro"><option value="">— Selecione —</option>${membOpts}</select></div>
+      <div class="form-group"><label class="form-label">MÊS DE REFERÊNCIA</label><div class="chips-wrap" id="li-meses">${mesesChips}</div></div>
+      <div class="form-group"><label class="form-label">CRITÉRIO</label><div id="li-criterios" style="display:flex;flex-direction:column;gap:7px;">${critChips}</div></div>
+      <div class="form-group"><label class="form-label">OBSERVAÇÃO (opcional)</label><textarea id="li-obs" placeholder="Ex: Post no @sellecta_oficial…"></textarea></div>
+      <button class="btn btn-gold" id="li-btn" onclick="confirmarLanceInline()">⭐ Confirmar Lançamento</button>
+    </div>`;
+}
+function selChipInline(el, wrapperId) {
+  document.getElementById(wrapperId).querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+async function confirmarLanceInline() {
+  const membroId = document.getElementById('li-membro').value;
+  const mesEl    = document.querySelector('#li-meses .chip.active');
+  const critEl   = document.querySelector('#li-criterios .chip.active');
+  const obs      = document.getElementById('li-obs').value.trim().slice(0,300);
+  if (!membroId) { toast('⚠️ Selecione um membro'); return; }
+  if (!mesEl)    { toast('⚠️ Selecione o mês'); return; }
+  if (!critEl)   { toast('⚠️ Selecione o critério'); return; }
+  const mes = MESES_K[MESES.indexOf(mesEl.textContent)];
+  const criterioId = critEl.dataset.id;
+  const pts = Number(critEl.dataset.pts);
+  const btn = document.getElementById('li-btn');
+  btn.textContent = 'Salvando…'; btn.disabled = true;
+  const res = await apiFetch('lancar', { membroId, mes, criterioId, pts, obs });
+  btn.textContent = '⭐ Confirmar Lançamento'; btn.disabled = false;
+  if (res.ok) {
+    const serverId = res.data?.id || Date.now().toString();
+    const serverTs = res.data?.ts || new Date().toISOString();
+    S.lancamentos.push({ membroId, mes, criterioId, pts, obs, id: serverId, ts: serverTs });
+    const nome = S.membros.find(m=>m.id===membroId)?.nome?.split(' ')[0] || 'membro';
+    toast(`✅ +${pts}★ para ${nome}`);
+    document.getElementById('li-membro').value = '';
+    document.getElementById('li-obs').value = '';
+    document.querySelectorAll('#li-criterios .chip').forEach(c=>c.classList.remove('active'));
+    document.querySelectorAll('#li-meses .chip').forEach((c,i)=>c.classList.toggle('active', i===0));
+  } else {
+    toast('❌ Erro ao salvar lançamento. Tente novamente.');
+  }
+}
+function renderHistorico() {
+  const mFiltro = S.histMes || '', mbFiltro = S.histMb || '';
+  let lista = [...S.lancamentos].reverse();
+  if (mFiltro)  lista = lista.filter(l=>l.mes===mFiltro);
+  if (mbFiltro) lista = lista.filter(l=>l.membroId===mbFiltro);
+  const mbOpts = S.membros.map(m=>`<option value="${esc(m.id)}" ${mbFiltro===m.id?'selected':''}>${esc(m.nome)}</option>`).join('');
+  const mOpts  = MESES_K.map((k,i)=>`<option value="${k}" ${mFiltro===k?'selected':''}>${MESES[i]}</option>`).join('');
+  const items = lista.length===0 ? `<div class="empty">Nenhum lançamento encontrado</div>`
+    : lista.map(l => {
+        const m = S.membros.find(x=>x.id===l.membroId);
+        const c = CRITERIOS.find(x=>x.id===l.criterioId);
+        const dt = new Date(l.ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+        return `<div class="hist-item"><div class="hist-pts">${l.pts}★</div>
+          <div class="hist-info">
+            <div class="hist-nome">${esc(m?.nome||'?')}</div>
+            <div class="hist-crit">${esc(c?.label||l.criterioId)} · ${esc(MESES[MESES_K.indexOf(l.mes)]||l.mes)}</div>
+            ${l.obs?`<div class="hist-date">${esc(l.obs)}</div>`:''}
+            <div class="hist-date">${dt}</div>
+          </div>
+          <button class="hist-del" data-id="${esc(l.id)}" onclick="removerLanceBtn(this)">✕</button></div>`;
+      }).join('');
+  return `<div class="hist-filters">
+    <select onchange="S.histMb=this.value;renderContent()"><option value="">Todos membros</option>${mbOpts}</select>
+    <select onchange="S.histMes=this.value;renderContent()"><option value="">Todos meses</option>${mOpts}</select>
+  </div><div class="card">${items}</div>`;
+}
+let _roleAtual = 'membro';
+function setRole(r) {
+  _roleAtual = r;
+  document.getElementById('role-membro').classList.toggle('active',  r==='membro');
+  document.getElementById('role-gestora').classList.toggle('active', r==='gestora');
+}
+function openNovoMembro() {
+  document.getElementById('sheet-membro-title').textContent = '👤 Novo Membro';
+  document.getElementById('m-id').value = '';
+  ['nome','empresa','wpp','ig'].forEach(f=>document.getElementById('m-'+f).value='');
+  setRole('membro');
+  document.getElementById('m-btn').textContent = 'Salvar Membro';
+  openSheet('sheet-membro');
+}
+function openEditMembro(id) {
+  const m = S.membros.find(x=>x.id===id); if(!m) return;
+  document.getElementById('sheet-membro-title').textContent = '✏️ Editar Membro';
+  document.getElementById('m-id').value = m.id;
+  document.getElementById('m-nome').value    = m.nome;
+  document.getElementById('m-empresa').value = m.empresa||'';
+  document.getElementById('m-wpp').value     = m.whatsapp||'';
+  document.getElementById('m-ig').value      = m.instagram||'';
+  setRole(m.role||'membro');
+  document.getElementById('m-btn').textContent = 'Salvar Alterações';
+  openSheet('sheet-membro');
+}
+async function salvarMembro() {
+  const nome = document.getElementById('m-nome').value.trim();
+  if (!nome) { toast('⚠️ Nome obrigatório'); return; }
+  const id = document.getElementById('m-id').value;
+  const dados = {
+    id: id || 'm'+Date.now(),
+    nome: nome.slice(0,120),
+    empresa:   document.getElementById('m-empresa').value.trim().slice(0,120),
+    whatsapp:  document.getElementById('m-wpp').value.trim().slice(0,30),
+    instagram: document.getElementById('m-ig').value.trim().slice(0,60),
+    role: _roleAtual,
+  };
+  const btn = document.getElementById('m-btn');
+  btn.textContent = 'Salvando…'; btn.disabled = true;
+  const res = await apiFetch(id ? 'editar-membro' : 'salvar-membro', dados);
+  btn.textContent = id ? 'Salvar Alterações' : 'Salvar Membro'; btn.disabled = false;
+  if (res.ok) {
+    if (id) S.membros = S.membros.map(m=>m.id===id?{...m,...dados}:m);
+    else    S.membros.push(dados);
+    closeSheet('sheet-membro');
+    toast(id ? '✅ Membro atualizado' : '✅ Membro cadastrado');
+    renderContent();
+  } else {
+    toast('❌ Erro ao salvar membro. Tente novamente.');
+  }
+}
+async function removerMembroBtn(btn) {
+  const id = btn.dataset.id;
+  const m = S.membros.find(x=>x.id===id); if(!m) return;
+  if (!confirm(`Remover "${m.nome}" e todos os seus lançamentos?`)) return;
+  const res = await apiFetch('remover-membro', { id });
+  if (res.ok) {
+    S.membros     = S.membros.filter(x=>x.id!==id);
+    S.lancamentos = S.lancamentos.filter(l=>l.membroId!==id);
+    toast('🗑 Membro removido'); renderContent();
+  } else { toast('❌ Erro ao remover membro. Tente novamente.'); }
+}
+async function removerLanceBtn(btn) {
+  const id = btn.dataset.id;
+  if (!confirm('Remover este lançamento?')) return;
+  const res = await apiFetch('remover-lance', { id });
+  if (res.ok) {
+    S.lancamentos = S.lancamentos.filter(l=>l.id!==id);
+    toast('🗑 Lançamento removido'); renderContent();
+  } else { toast('❌ Erro ao remover. Tente novamente.'); }
+}
+function openPerfil(id) {
+  const m = S.membros.find(x=>x.id===id); if(!m) return;
+  const rank = rankingData('geral');
+  const posIdx = rank.findIndex(x=>x.id===id);
+  const pos = m.role==='gestora' ? '—' : (posIdx >= 0 ? posIdx+1 : '—');
+  const total = pontosMembro(id,'geral');
+  const lances = S.lancamentos.filter(l=>l.membroId===id);
+  const meses = MESES.map((mes,i)=>{
+    const pts = pontosMembro(id, MESES_K[i]);
+    const max = Math.max(...MESES.map((_,j)=>pontosMembro(id,MESES_K[j])),1);
+    return `<div style="margin-bottom:8px;"><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:3px;"><span>${mes}</span><span>${pts}★</span></div><div class="prog-bar"><div class="prog-fill" style="width:${Math.round(pts/max*100)}%"></div></div></div>`;
+  }).join('');
+  const breakdown = CRITERIOS.map(c=>{
+    const n = lances.filter(l=>l.criterioId===c.id).length;
+    if(!n) return '';
+    return `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;"><span>${c.label}</span><span style="color:var(--gold)">${n}× = ${n*c.pts}★</span></div>`;
+  }).join('');
+  const ultimos = [...lances].reverse().slice(0,10).map(l=>{
+    const c = CRITERIOS.find(x=>x.id===l.criterioId);
+    const dt = new Date(l.ts).toLocaleDateString('pt-BR');
+    return `<div class="hist-item"><div class="hist-pts">${l.pts}★</div><div class="hist-info"><div class="hist-crit">${esc(c?.label||l.criterioId)}</div><div class="hist-date">${esc(MESES[MESES_K.indexOf(l.mes)]||l.mes)} · ${dt}</div></div></div>`;
+  }).join('') || '<div class="empty">Sem lançamentos</div>';
+  document.getElementById('sheet-perfil-body').innerHTML = `
+    <div class="sheet-handle"></div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#2980B9);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600;margin:0 auto 10px;">${esc(m.nome.charAt(0).toUpperCase())}</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;">${esc(m.nome)}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px;">${esc(m.empresa||'—')}</div>
+    </div>
+    <div class="stats" style="margin-bottom:16px;">
+      <div class="stat"><div class="stat-v">#${pos}</div><div class="stat-l">POSIÇÃO</div></div>
+      <div class="stat"><div class="stat-v">${total}</div><div class="stat-l">ESTRELAS</div></div>
+      <div class="stat"><div class="stat-v">${lances.length}</div><div class="stat-l">LANCES</div></div>
+      <div class="stat"><div class="stat-v">${m.role==='gestora'?'Gest.':'Membro'}</div><div class="stat-l">PAPEL</div></div>
+    </div>
+    <div class="section-title">Por mês</div>${meses}
+    <div class="section-title">Por critério</div>
+    <div class="card">${breakdown||'<div class="empty">Sem pontos</div>'}</div>
+    <div class="section-title">Últimos lançamentos</div>
+    <div class="card">${ultimos}</div>
+    <button class="btn btn-outline" style="margin-top:16px;" onclick="closeSheet('sheet-perfil')">Fechar</button>`;
+  openSheet('sheet-perfil');
+}
+function openSheet(id)  { document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
+function closeSheet(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
+document.querySelectorAll('.overlay').forEach(o=>{ o.addEventListener('click',e=>{ if(e.target===o) closeSheet(o.id); }); });
+let _toastT;
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(_toastT);
+  _toastT = setTimeout(()=>el.classList.remove('show'), 3000);
+}
+init();
+</script>
+</body>
+</html>
