@@ -14,78 +14,37 @@
   --red:#E74C3C;--blue:#3498DB;--radius:14px;--shadow:0 8px 32px rgba(0,0,0,.5);
 }
 html,body{height:100%;background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
-
-/* ── HEADER ── */
-.header{
-  position:sticky;top:0;z-index:100;
-  background:linear-gradient(180deg,var(--dark) 0%,rgba(10,10,15,.92) 100%);
-  backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);
-  padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between;
-}
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,var(--dark) 0%,rgba(10,10,15,.92) 100%);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.15);padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.08em;}
 .logo span{color:var(--gold);font-weight:600;}
-.badge{
-  display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;
-  font-size:11px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:.2s;
-  border:1px solid;
-}
+.badge{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:.2s;border:1px solid;}
 .badge.pub{background:rgba(46,204,113,.08);border-color:rgba(46,204,113,.25);color:#2ECC71;}
 .badge.adm{background:rgba(201,168,76,.12);border-color:rgba(201,168,76,.35);color:var(--gold);}
 .badge:active{opacity:.7;}
-
-/* ── TABS ── */
 .tabs{display:flex;background:var(--dark2);border-bottom:1px solid rgba(255,255,255,.05);overflow-x:auto;scrollbar-width:none;}
 .tabs::-webkit-scrollbar{display:none;}
-.tab{
-  flex:1;min-width:70px;padding:12px 6px 10px;text-align:center;cursor:pointer;
-  font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em;
-  border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;
-}
+.tab{flex:1;min-width:70px;padding:12px 6px 10px;text-align:center;cursor:pointer;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.04em;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;}
 .tab.active{color:var(--gold);border-bottom-color:var(--gold);}
 .tab .ti{display:block;font-size:17px;margin-bottom:2px;}
-
-/* ── SCROLL CONTENT ── */
 .content{padding:16px;padding-bottom:80px;min-height:calc(100vh - 100px);}
-
-/* ── CARDS ── */
 .card{background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:16px;margin-bottom:12px;}
-.card-gold{border-color:rgba(201,168,76,.2);background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,var(--dark2) 60%);}
-
-/* ── RANKING HEADER ── */
 .rank-header{text-align:center;padding:20px 0 8px;}
 .rank-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:.06em;}
 .rank-title span{color:var(--gold);}
 .rank-period{font-size:11px;color:var(--muted);margin-top:4px;letter-spacing:.06em;}
-
-/* ── STATS ROW ── */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0;}
 .stat{background:var(--dark3);border-radius:10px;padding:10px 6px;text-align:center;}
 .stat-v{font-size:20px;font-weight:600;color:var(--gold);font-family:'Cormorant Garamond',serif;}
 .stat-l{font-size:9px;color:var(--muted);letter-spacing:.06em;margin-top:2px;}
-
-/* ── PROGRESS BAR ── */
 .prog-wrap{margin:4px 0 16px;}
 .prog-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px;}
 .prog-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width .8s ease;}
-
-/* ── MONTH FILTER ── */
 .month-filter{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
 .month-filter::-webkit-scrollbar{display:none;}
-.mchip{
-  padding:5px 14px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;
-  background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--muted);
-  white-space:nowrap;transition:.2s;
-}
+.mchip{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--muted);white-space:nowrap;transition:.2s;}
 .mchip.active{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.4);color:var(--gold);}
-
-/* ── RANK CARD ── */
-.rank-card{
-  display:flex;align-items:center;gap:12px;
-  background:var(--dark2);border:1px solid rgba(255,255,255,.06);
-  border-radius:var(--radius);padding:13px 14px;margin-bottom:8px;
-  cursor:pointer;transition:.15s;
-}
+.rank-card{display:flex;align-items:center;gap:12px;background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:13px 14px;margin-bottom:8px;cursor:pointer;transition:.15s;}
 .rank-card:active{opacity:.75;}
 .rank-card.top1{border-color:rgba(201,168,76,.35);background:linear-gradient(135deg,rgba(201,168,76,.08),var(--dark2));}
 .rank-card.top2{border-color:rgba(192,192,192,.2);}
@@ -95,12 +54,7 @@ html,body{height:100%;background:var(--dark);color:var(--text);font-family:'DM S
 .rank-num.p2{color:#C0C0C0;}
 .rank-num.p3{color:#CD7F32;}
 .rank-num.pn{color:var(--muted);font-size:16px;}
-.rank-avatar{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),#3498DB);
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;font-weight:600;flex-shrink:0;
-}
+.rank-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#3498DB);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;flex-shrink:0;}
 .rank-info{flex:1;min-width:0;}
 .rank-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rank-empresa{font-size:11px;color:var(--muted);margin-top:1px;}
@@ -109,112 +63,52 @@ html,body{height:100%;background:var(--dark);color:var(--text);font-family:'DM S
 .rank-pts-l{font-size:9px;color:var(--muted);letter-spacing:.06em;}
 .rank-bar{height:2px;background:rgba(255,255,255,.06);border-radius:1px;margin-top:6px;overflow:hidden;}
 .rank-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:1px;}
-.tie-chip{font-size:9px;background:rgba(52,152,219,.15);border:1px solid rgba(52,152,219,.3);color:#3498DB;padding:2px 6px;border-radius:10px;margin-left:6px;}
-
-/* ── PRÊMIO ── */
-.premio-hero{
-  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(123,47,190,.08));
-  border:1px solid rgba(201,168,76,.2);border-radius:var(--radius);
-  padding:24px;text-align:center;margin-bottom:16px;
-}
+.premio-hero{background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(123,47,190,.08));border:1px solid rgba(201,168,76,.2);border-radius:var(--radius);padding:24px;text-align:center;margin-bottom:16px;}
 .premio-icon{font-size:48px;margin-bottom:8px;}
 .premio-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--gold);}
 .premio-sub{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5;}
-.premio-tag{
-  display:inline-block;margin:4px;padding:4px 10px;border-radius:12px;
-  font-size:11px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);color:var(--gold);
-}
+.premio-tag{display:inline-block;margin:4px;padding:4px 10px;border-radius:12px;font-size:11px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);color:var(--gold);}
 .criterios-list{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
-.criterio{
-  display:flex;align-items:center;gap:12px;
-  background:var(--dark3);border-radius:10px;padding:11px 13px;
-}
-.criterio-pts{
-  min-width:38px;text-align:center;font-size:15px;font-weight:700;
-  color:var(--gold);font-family:'Cormorant Garamond',serif;
-}
+.criterio{display:flex;align-items:center;gap:12px;background:var(--dark3);border-radius:10px;padding:11px 13px;}
+.criterio-pts{min-width:38px;text-align:center;font-size:15px;font-weight:700;color:var(--gold);font-family:'Cormorant Garamond',serif;}
 .criterio-info{flex:1;}
 .criterio-nome{font-size:13px;font-weight:500;}
 .criterio-valid{font-size:10px;color:var(--muted);margin-top:2px;}
 .desempate-list{counter-reset:dc;}
-.desempate-item{
-  display:flex;align-items:center;gap:10px;padding:9px 0;
-  border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;
-}
+.desempate-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;}
 .desempate-item:last-child{border:none;}
-.dc-num{
-  width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,.15);
-  border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0;
-}
-.section-title{
-  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;
-  letter-spacing:.06em;margin:18px 0 10px;display:flex;align-items:center;gap:8px;
-}
+.dc-num{width:22px;height:22px;border-radius:50%;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:400;letter-spacing:.06em;margin:18px 0 10px;display:flex;align-items:center;gap:8px;}
 .section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
-
-/* ── FORMS ── */
 .form-group{margin-bottom:14px;}
 .form-label{font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px;display:block;}
-select,input,textarea{
-  width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,.1);
-  border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;
-  font-family:'DM Sans',sans-serif;outline:none;transition:.2s;
-  -webkit-appearance:none;appearance:none;
-}
+select,input,textarea{width:100%;background:var(--dark3);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:.2s;-webkit-appearance:none;appearance:none;}
 select:focus,input:focus,textarea:focus{border-color:rgba(201,168,76,.4);}
 textarea{resize:vertical;min-height:70px;}
 .chips-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
-.chip{
-  padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;
-  background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--muted);transition:.2s;
-}
+.chip{padding:6px 14px;border-radius:20px;font-size:12px;cursor:pointer;background:var(--dark3);border:1px solid rgba(255,255,255,.08);color:var(--muted);transition:.2s;}
 .chip.active{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.4);color:var(--gold);}
 .chip-crit{padding:8px 14px;border-radius:10px;text-align:left;font-size:12px;display:flex;align-items:center;gap:8px;}
 .chip-crit .cc-pts{font-weight:700;color:var(--gold);min-width:24px;}
-
-/* ── BUTTONS ── */
-.btn{
-  width:100%;padding:14px;border-radius:12px;border:none;font-size:14px;
-  font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:.2s;letter-spacing:.04em;
-}
+.btn{width:100%;padding:14px;border-radius:12px;border:none;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:.2s;letter-spacing:.04em;}
 .btn:active{transform:scale(.98);}
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0A0A0F;}
 .btn-gold:disabled{opacity:.5;cursor:not-allowed;}
 .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text);}
 .btn-red{background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.25);color:var(--red);}
 .btn-sm{padding:7px 14px;font-size:12px;width:auto;border-radius:8px;}
-
-/* ── MEMBER CARDS ── */
-.member-card{
-  background:var(--dark2);border:1px solid rgba(255,255,255,.06);
-  border-radius:var(--radius);padding:14px;margin-bottom:10px;
-}
+.member-card{background:var(--dark2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:14px;margin-bottom:10px;}
 .member-head{display:flex;align-items:center;gap:12px;}
-.member-avatar{
-  width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,var(--purple),#2980B9);
-  display:flex;align-items:center;justify-content:center;
-  font-size:17px;font-weight:600;flex-shrink:0;
-}
+.member-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#2980B9);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;flex-shrink:0;}
 .member-info{flex:1;min-width:0;}
 .member-name{font-size:14px;font-weight:500;}
 .member-emp{font-size:11px;color:var(--muted);margin-top:2px;}
 .member-pts{text-align:right;font-size:18px;font-weight:700;color:var(--gold);font-family:'Cormorant Garamond',serif;}
 .member-actions{display:flex;gap:6px;margin-top:12px;}
 .gestora-tag{font-size:9px;background:rgba(123,47,190,.2);border:1px solid rgba(123,47,190,.3);color:#A855F7;padding:2px 7px;border-radius:10px;margin-left:6px;}
-
-/* ── HISTÓRICO ── */
-.hist-item{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);
-}
+.hist-item{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);}
 .hist-item:last-child{border:none;}
-.hist-pts{
-  min-width:36px;height:36px;border-radius:8px;background:rgba(201,168,76,.1);
-  border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:700;color:var(--gold);flex-shrink:0;
-}
+.hist-pts{min-width:36px;height:36px;border-radius:8px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--gold);flex-shrink:0;}
 .hist-info{flex:1;min-width:0;}
 .hist-nome{font-size:13px;font-weight:500;}
 .hist-crit{font-size:11px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -223,73 +117,34 @@ textarea{resize:vertical;min-height:70px;}
 .hist-del:active{color:var(--red);}
 .hist-filters{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
 .hist-filters select{flex:1;min-width:120px;}
-
-/* ── OVERLAY / BOTTOM SHEET ── */
-.overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;
-  display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:.25s;
-}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:.25s;}
 .overlay.show{opacity:1;pointer-events:all;}
-.sheet{
-  width:100%;max-height:88vh;overflow-y:auto;
-  background:var(--dark2);border-radius:20px 20px 0 0;
-  padding:20px 18px 40px;transform:translateY(100%);transition:.3s cubic-bezier(.4,0,.2,1);
-  border-top:1px solid rgba(201,168,76,.15);
-}
+.sheet{width:100%;max-height:88vh;overflow-y:auto;background:var(--dark2);border-radius:20px 20px 0 0;padding:20px 18px 40px;transform:translateY(100%);transition:.3s cubic-bezier(.4,0,.2,1);border-top:1px solid rgba(201,168,76,.15);}
 .overlay.show .sheet{transform:translateY(0);}
 .sheet-handle{width:36px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;margin:0 auto 18px;}
 .sheet-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:18px;letter-spacing:.04em;}
-
-/* ── LOGIN ── */
-.login-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;
-  display:flex;align-items:center;justify-content:center;padding:20px;
-  opacity:0;pointer-events:none;transition:.25s;
-}
+.login-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.25s;}
 .login-overlay.show{opacity:1;pointer-events:all;}
-.login-box{
-  width:100%;max-width:320px;background:var(--dark2);border:1px solid rgba(201,168,76,.2);
-  border-radius:20px;padding:28px 22px;
-}
+.login-box{width:100%;max-width:320px;background:var(--dark2);border:1px solid rgba(201,168,76,.2);border-radius:20px;padding:28px 22px;}
 .login-logo{font-family:'Cormorant Garamond',serif;font-size:20px;text-align:center;margin-bottom:4px;}
 .login-logo span{color:var(--gold);}
 .login-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:20px;}
 .login-erro{color:var(--red);font-size:12px;text-align:center;margin-top:8px;min-height:18px;}
-
-/* ── FAB ── */
-.fab{
-  position:fixed;bottom:20px;right:20px;z-index:150;
-  width:52px;height:52px;border-radius:50%;border:none;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:#0A0A0F;font-size:26px;cursor:pointer;
-  box-shadow:0 4px 20px rgba(201,168,76,.4);transition:.2s;
-  display:flex;align-items:center;justify-content:center;
-}
+.fab{position:fixed;bottom:20px;right:20px;z-index:150;width:52px;height:52px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0A0A0F;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(201,168,76,.4);transition:.2s;display:flex;align-items:center;justify-content:center;}
 .fab:active{transform:scale(.92);}
 .fab.hidden{display:none;}
-
-/* ── TOAST ── */
-.toast{
-  position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--dark3);border:1px solid rgba(255,255,255,.12);border-radius:12px;
-  padding:10px 18px;font-size:13px;z-index:500;opacity:0;transition:.3s;
-  pointer-events:none;white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden;
-}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark3);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:10px 18px;font-size:13px;z-index:500;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-
-/* ── STATUS DOT ── */
 .sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .sdot.g{background:#2ECC71;box-shadow:0 0 6px #2ECC71;}
 .sdot.y{background:#F39C12;box-shadow:0 0 6px #F39C12;}
 .sdot.r{background:var(--red);box-shadow:0 0 6px var(--red);}
-
 .empty{text-align:center;color:var(--muted);font-size:13px;padding:30px 0;}
 .divider{height:1px;background:rgba(255,255,255,.05);margin:16px 0;}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">Sellecta <span>Stars</span></div>
   <div style="display:flex;align-items:center;gap:8px;">
@@ -301,16 +156,10 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- TABS -->
 <div class="tabs" id="tabs"></div>
-
-<!-- CONTENT -->
 <div class="content" id="content"></div>
-
-<!-- FAB (admin) -->
 <button class="fab hidden" id="fab" onclick="setTab('lancar')">＋</button>
 
-<!-- ── LOGIN OVERLAY ── -->
 <div class="login-overlay" id="login-overlay">
   <div class="login-box">
     <div class="login-logo">Sellecta <span>Stars</span></div>
@@ -324,11 +173,6 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- ── BOTTOM SHEETS ── -->
-
-
-
-<!-- Novo/Editar Membro -->
 <div class="overlay" id="sheet-membro">
   <div class="sheet">
     <div class="sheet-handle"></div>
@@ -362,18 +206,14 @@ textarea{resize:vertical;min-height:70px;}
   </div>
 </div>
 
-<!-- Perfil -->
 <div class="overlay" id="sheet-perfil">
   <div class="sheet" id="sheet-perfil-body"></div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
 const SENHA_ADMIN = 'S3ll3cta@Stars#26';
-
 const MEMBROS_INICIAIS = [
   {id:'sid001',nome:'Sidney Viana',   empresa:'Multvision',           whatsapp:'',instagram:'',role:'membro'},
   {id:'bru002',nome:'Bruno Lima',     empresa:'Bruno Lima Collection', whatsapp:'',instagram:'',role:'membro'},
@@ -386,8 +226,6 @@ const MEMBROS_INICIAIS = [
   {id:'luc009',nome:'Lucas Santos',   empresa:'Requin Capital',        whatsapp:'',instagram:'',role:'membro'},
   {id:'mar010',nome:'Marcelo Caminha',empresa:'Clínica',               whatsapp:'',instagram:'',role:'membro'},
 ];
-
-// ─── ESTADO ──────────────────────────────────────────────────────────────────
 const MESES   = ['Março','Abril','Maio','Junho'];
 const MESES_K = ['marco','abril','maio','junho'];
 const CRITERIOS = [
@@ -400,20 +238,14 @@ const CRITERIOS = [
   {id:'negocio',     pts:5,  label:'Fechou negócio na Sellecta',         valid:'Ambas as partes p/ Camila'},
   {id:'patrocinio',  pts:10, label:'Patrocinar evento Sellecta',         valid:'Interna'},
 ];
-
 const S = { membros:[], lancamentos:[], tab:'ranking', mesFiltro:'geral', isAdmin:false, histMes:'', histMb:'' };
-
 function safeEnc(s) { return encodeURIComponent(String(s)).replace(/'/g,'%27'); }
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-// ─── API ─────────────────────────────────────────────────────────────────────
 function setDot(c) { document.getElementById('sdot').className = 'sdot ' + c; }
-
 async function apiFetch(action, body) {
   setDot('y');
   try {
-    const opts = body
-      ? {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}
-      : {method:'GET'};
+    const opts = body ? {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)} : {method:'GET'};
     const r = await fetch(`/api?action=${action}`, opts);
     const d = await r.json();
     setDot('g');
@@ -424,8 +256,6 @@ async function apiFetch(action, body) {
     return { ok: false, data: null };
   }
 }
-
-// ─── INIT ────────────────────────────────────────────────────────────────────
 async function init() {
   buildTabs();
   renderContent();
@@ -437,29 +267,12 @@ async function init() {
   } else {
     document.getElementById('content').innerHTML = `
       <div style="text-align:center;padding:40px 20px;">
-        <div style="font-size:40px;margin-bottom:12px;">&#x1F4E1;</div>
-        <div style="color:var(--muted);font-size:14px;margin-bottom:16px;">Erro ao conectar com o servidor</div>
-        <button class="btn btn-outline" style="width:auto;padding:10px 24px;" onclick="init()">Tentar novamente</button>
-      </div>`;
-  }
-}
-
-    S.membros     = membros;
-    S.lancamentos = lancamentos;
-    setDot('g');
-    renderContent();
-  } catch(e) {
-    setDot('r');
-    document.getElementById('content').innerHTML = `
-      <div style="text-align:center;padding:40px 20px;">
         <div style="font-size:40px;margin-bottom:12px;">📡</div>
         <div style="color:var(--muted);font-size:14px;margin-bottom:16px;">Erro ao conectar com o servidor</div>
         <button class="btn btn-outline" style="width:auto;padding:10px 24px;" onclick="init()">Tentar novamente</button>
       </div>`;
   }
 }
-
-// ─── LOGIN ───────────────────────────────────────────────────────────────────
 function openLogin() {
   if (S.isAdmin) { setAdmin(false); return; }
   document.getElementById('login-overlay').classList.add('show');
@@ -484,36 +297,24 @@ async function doLogin() {
   }
   btn.textContent = 'Entrar'; btn.disabled = false;
 }
-
 function setAdmin(v) {
   S.isAdmin = v;
-  const badge = document.getElementById('badge');
   document.getElementById('badge-icon').textContent  = v ? '🔑' : '👁';
   document.getElementById('badge-label').textContent = v ? 'Admin' : 'Público';
-  badge.className = 'badge ' + (v ? 'adm' : 'pub');
+  document.getElementById('badge').className = 'badge ' + (v ? 'adm' : 'pub');
   document.getElementById('fab').classList.toggle('hidden', !v);
-  buildTabs();
-  renderContent();
+  buildTabs(); renderContent();
 }
-
-// ─── TABS ────────────────────────────────────────────────────────────────────
 const TABS_PUB = [{id:'ranking',icon:'⭐',label:'Ranking'},{id:'premiacao',icon:'🏆',label:'Prêmio'}];
-const TABS_ADM = [
-  {id:'ranking',icon:'⭐',label:'Ranking'},{id:'lancar',icon:'＋',label:'Lançar'},
-  {id:'membros',icon:'👥',label:'Membros'},{id:'historico',icon:'📋',label:'Histórico'}
-];
+const TABS_ADM = [{id:'ranking',icon:'⭐',label:'Ranking'},{id:'lancar',icon:'＋',label:'Lançar'},{id:'membros',icon:'👥',label:'Membros'},{id:'historico',icon:'📋',label:'Histórico'}];
 function buildTabs() {
   const tabs = S.isAdmin ? TABS_ADM : TABS_PUB;
   if (!tabs.find(t=>t.id===S.tab)) S.tab = tabs[0].id;
   document.getElementById('tabs').innerHTML = tabs.map(t =>
-    `<div class="tab ${S.tab===t.id?'active':''}" onclick="setTab('${t.id}')">
-       <span class="ti">${t.icon}</span>${t.label}
-     </div>`
+    `<div class="tab ${S.tab===t.id?'active':''}" onclick="setTab('${t.id}')"><span class="ti">${t.icon}</span>${t.label}</div>`
   ).join('');
 }
 function setTab(id) { S.tab = id; buildTabs(); renderContent(); window.scrollTo(0,0); }
-
-// ─── RENDER ROUTER ───────────────────────────────────────────────────────────
 function renderContent() {
   const c = document.getElementById('content');
   if (S.tab==='ranking')   c.innerHTML = renderRanking();
@@ -522,35 +323,27 @@ function renderContent() {
   if (S.tab==='membros')   c.innerHTML = renderMembros();
   if (S.tab==='historico') c.innerHTML = renderHistorico();
 }
-
-// ─── RANKING ─────────────────────────────────────────────────────────────────
 function pontosMembro(id, mes) {
-  return S.lancamentos
-    .filter(l => l.membroId===id && (mes==='geral' || l.mes===mes))
-    .reduce((a,l)=>a+Number(l.pts),0);
+  return S.lancamentos.filter(l => l.membroId===id && (mes==='geral' || l.mes===mes)).reduce((a,l)=>a+Number(l.pts),0);
 }
 function rankingData(mes) {
-  return S.membros
-    .filter(m => m.role==='membro')
-    .map(m => ({ ...m, pts: pontosMembro(m.id, mes) }))
+  return S.membros.filter(m => m.role==='membro').map(m => ({ ...m, pts: pontosMembro(m.id, mes) }))
     .sort((a,b) => {
       if (b.pts !== a.pts) return b.pts - a.pts;
       const ind = id => S.lancamentos.filter(l=>l.membroId===id&&(l.criterioId==='indicacao'||l.criterioId==='membro_conv')&&(mes==='geral'||l.mes===mes)).length;
       if (ind(b.id)!==ind(a.id)) return ind(b.id)-ind(a.id);
-      const ev  = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='evento'&&(mes==='geral'||l.mes===mes)).length;
-      if (ev(b.id)!==ev(a.id))  return ev(b.id)-ev(a.id);
-      const fd  = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='feed'&&(mes==='geral'||l.mes===mes)).length;
-      if (fd(b.id)!==fd(a.id))  return fd(b.id)-fd(a.id);
-      const st  = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='story'&&(mes==='geral'||l.mes===mes)).length;
+      const ev = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='evento'&&(mes==='geral'||l.mes===mes)).length;
+      if (ev(b.id)!==ev(a.id)) return ev(b.id)-ev(a.id);
+      const fd = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='feed'&&(mes==='geral'||l.mes===mes)).length;
+      if (fd(b.id)!==fd(a.id)) return fd(b.id)-fd(a.id);
+      const st = id => S.lancamentos.filter(l=>l.membroId===id&&l.criterioId==='story'&&(mes==='geral'||l.mes===mes)).length;
       return st(b.id)-st(a.id);
     });
 }
 function progressoPeriodo() {
   const ini = new Date('2026-03-05'), fim = new Date('2026-06-05'), now = new Date();
   const total = fim-ini, passed = Math.min(Math.max(now-ini,0), total);
-  const pct = Math.round(passed/total*100);
-  const diasRest = Math.max(0, Math.ceil((fim-now)/86400000));
-  return { pct, diasRest };
+  return { pct: Math.round(passed/total*100), diasRest: Math.max(0, Math.ceil((fim-now)/86400000)) };
 }
 function renderRanking() {
   const { pct, diasRest } = progressoPeriodo();
@@ -558,36 +351,28 @@ function renderRanking() {
   const totalEstrelas = dados.reduce((a,m)=>a+m.pts,0);
   const lider = dados[0]?.pts > 0 ? esc(dados[0].nome.split(' ')[0]) : '—';
   const maxPts = dados[0]?.pts || 1;
-  let chips = `<div class="month-filter">
+  const chips = `<div class="month-filter">
     <div class="mchip ${S.mesFiltro==='geral'?'active':''}" onclick="setMes('geral')">Geral</div>
     ${MESES.map((m,i)=>`<div class="mchip ${S.mesFiltro===MESES_K[i]?'active':''}" onclick="setMes('${MESES_K[i]}')">${m}</div>`).join('')}
   </div>`;
-  let cards = dados.length===0
-    ? `<div class="empty">Nenhum membro cadastrado</div>`
+  const cards = dados.length===0 ? `<div class="empty">Nenhum membro cadastrado</div>`
     : dados.map((m,i) => {
         const cls = i===0?'top1':i===1?'top2':i===2?'top3':'';
-        const ncls= i===0?'p1':i===1?'p2':i===2?'p3':'pn';
-        const ini = m.nome.charAt(0).toUpperCase();
-        const pct = Math.round(m.pts/maxPts*100);
-        const idSafeR = safeEnc(m.id);
-        return `<div class="rank-card ${cls}" onclick="openPerfil(decodeURIComponent('${idSafeR}'))">
+        const ncls = i===0?'p1':i===1?'p2':i===2?'p3':'pn';
+        const p = Math.round(m.pts/maxPts*100);
+        const idS = safeEnc(m.id);
+        return `<div class="rank-card ${cls}" onclick="openPerfil(decodeURIComponent('${idS}'))">
           <div class="rank-num ${ncls}">${i+1}</div>
-          <div class="rank-avatar">${esc(ini)}</div>
+          <div class="rank-avatar">${esc(m.nome.charAt(0).toUpperCase())}</div>
           <div class="rank-info">
             <div class="rank-name">${esc(m.nome)}</div>
             <div class="rank-empresa">${esc(m.empresa||'—')}</div>
-            <div class="rank-bar"><div class="rank-bar-fill" style="width:${pct}%"></div></div>
+            <div class="rank-bar"><div class="rank-bar-fill" style="width:${p}%"></div></div>
           </div>
-          <div class="rank-stars">
-            <div class="rank-pts">${m.pts}</div>
-            <div class="rank-pts-l">ESTRELAS</div>
-          </div>
+          <div class="rank-stars"><div class="rank-pts">${m.pts}</div><div class="rank-pts-l">ESTRELAS</div></div>
         </div>`;
       }).join('');
-  return `<div class="rank-header">
-    <div class="rank-title">Ranking <span>Stars</span></div>
-    <div class="rank-period">05 Mar → 05 Jun 2026</div>
-  </div>
+  return `<div class="rank-header"><div class="rank-title">Ranking <span>Stars</span></div><div class="rank-period">05 Mar → 05 Jun 2026</div></div>
   <div class="stats">
     <div class="stat"><div class="stat-v">${S.membros.filter(m=>m.role==='membro').length}</div><div class="stat-l">MEMBROS</div></div>
     <div class="stat"><div class="stat-v">${totalEstrelas}</div><div class="stat-l">ESTRELAS</div></div>
@@ -601,328 +386,31 @@ function renderRanking() {
   ${chips}${cards}`;
 }
 function setMes(m) { S.mesFiltro = m; renderContent(); }
-
-// ─── PRÊMIO ──────────────────────────────────────────────────────────────────
 function renderPremiacao() {
-  const crits = CRITERIOS.map(c =>
-    `<div class="criterio">
-      <div class="criterio-pts">${c.pts}★</div>
-      <div class="criterio-info">
-        <div class="criterio-nome">${c.label}</div>
-        <div class="criterio-valid">Validação: ${c.valid}</div>
-      </div>
-    </div>`
-  ).join('');
-  const desemp = [
-    'Quem indicou mais pessoas no mês',
-    'Quem foi mais vezes aos eventos',
-    'Quem postou mais no feed marcando Sellecta',
-    'Quem postou mais nos stories marcando Sellecta',
-  ].map((t,i)=>`<div class="desempate-item"><div class="dc-num">${i+1}</div><span>${t}</span></div>`).join('');
-  return `
-  <div class="premio-hero">
-    <div class="premio-icon">🏆</div>
-    <div class="premio-title">Grande Prêmio</div>
-    <div class="premio-sub">Final de semana em Pedras do Patacho<br>Pousada Boutique em Alagoas</div>
-    <div style="margin-top:12px;">
-      <span class="premio-tag">Vencedor + 1 acompanhante</span>
-      <span class="premio-tag">Traslado premium by Zeekr</span>
-    </div>
-  </div>
-  <div class="section-title">Como pontuar</div>
-  <div class="criterios-list">${crits}</div>
-  <div class="section-title">Regras de desempate</div>
-  <div class="desempate-list card">${desemp}</div>
-  <div class="card" style="margin-top:12px;text-align:center;">
-    <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Dúvidas? Fale com a Camila</div>
-    <a href="https://wa.me/5581985216788" style="color:var(--gold);font-size:14px;font-weight:600;text-decoration:none;">📱 (81) 9 8521-6788</a>
-  </div>`;
+  const crits = CRITERIOS.map(c=>`<div class="criterio"><div class="criterio-pts">${c.pts}★</div><div class="criterio-info"><div class="criterio-nome">${c.label}</div><div class="criterio-valid">Validação: ${c.valid}</div></div></div>`).join('');
+  const desemp = ['Quem indicou mais pessoas no mês','Quem foi mais vezes aos eventos','Quem postou mais no feed marcando Sellecta','Quem postou mais nos stories marcando Sellecta']
+    .map((t,i)=>`<div class="desempate-item"><div class="dc-num">${i+1}</div><span>${t}</span></div>`).join('');
+  return `<div class="premio-hero"><div class="premio-icon">🏆</div><div class="premio-title">Grande Prêmio</div><div class="premio-sub">Final de semana em Pedras do Patacho<br>Pousada Boutique em Alagoas</div><div style="margin-top:12px;"><span class="premio-tag">Vencedor + 1 acompanhante</span><span class="premio-tag">Traslado premium by Zeekr</span></div></div>
+  <div class="section-title">Como pontuar</div><div class="criterios-list">${crits}</div>
+  <div class="section-title">Regras de desempate</div><div class="desempate-list card">${desemp}</div>
+  <div class="card" style="margin-top:12px;text-align:center;"><div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Dúvidas? Fale com a Camila</div><a href="https://wa.me/5581985216788" style="color:var(--gold);font-size:14px;font-weight:600;text-decoration:none;">📱 (81) 9 8521-6788</a></div>`;
 }
-
-// ─── MEMBROS ─────────────────────────────────────────────────────────────────
 function renderMembros() {
-  const cards = S.membros.length===0
-    ? `<div class="empty">Nenhum membro cadastrado</div>`
+  const cards = S.membros.length===0 ? `<div class="empty">Nenhum membro cadastrado</div>`
     : S.membros.map(m => {
         const pts = pontosMembro(m.id,'geral');
-        const ini = m.nome.charAt(0).toUpperCase();
-        const idSafe = safeEnc(m.id);
-        return `<div class="member-card">
-          <div class="member-head">
-            <div class="member-avatar">${esc(ini)}</div>
-            <div class="member-info">
-              <div class="member-name">${esc(m.nome)}${m.role==='gestora'?'<span class="gestora-tag">Gestora</span>':''}</div>
-              <div class="member-emp">${esc(m.empresa||'—')}</div>
-            </div>
-            <div class="member-pts">${pts}★</div>
-          </div>
+        const idS = safeEnc(m.id);
+        return `<div class="member-card"><div class="member-head">
+          <div class="member-avatar">${esc(m.nome.charAt(0).toUpperCase())}</div>
+          <div class="member-info"><div class="member-name">${esc(m.nome)}${m.role==='gestora'?'<span class="gestora-tag">Gestora</span>':''}</div><div class="member-emp">${esc(m.empresa||'—')}</div></div>
+          <div class="member-pts">${pts}★</div></div>
           <div class="member-actions">
-            <button class="btn btn-outline btn-sm" onclick="openPerfil(decodeURIComponent('${idSafe}'))">Ver perfil</button>
-            <button class="btn btn-outline btn-sm" onclick="openEditMembro(decodeURIComponent('${idSafe}'))">Editar</button>
+            <button class="btn btn-outline btn-sm" onclick="openPerfil(decodeURIComponent('${idS}'))">Ver perfil</button>
+            <button class="btn btn-outline btn-sm" onclick="openEditMembro(decodeURIComponent('${idS}'))">Editar</button>
             <button class="btn btn-red btn-sm" data-id="${esc(m.id)}" onclick="removerMembroBtn(this)">Remover</button>
-          </div>
-        </div>`;
+          </div></div>`;
       }).join('');
   return `<button class="btn btn-gold" style="margin-bottom:16px;" onclick="openNovoMembro()">＋ Novo Membro</button>${cards}`;
 }
-
-// ─── LANÇAR INLINE ───────────────────────────────────────────────────────────
 function renderLancarInline() {
-  const membOpts = S.membros.filter(m=>m.role==='membro')
-    .map(m=>`<option value="${esc(m.id)}">${esc(m.nome)}</option>`).join('');
-  const mesesChips = MESES.map((m,i)=>
-    `<div class="chip ${i===0?'active':''}" onclick="selChipInline(this,'li-meses')">${m}</div>`
-  ).join('');
-  const critChips = CRITERIOS.map(c=>
-    `<div class="chip chip-crit" onclick="selChipInline(this,'li-criterios')" data-id="${c.id}" data-pts="${c.pts}">
-      <span class="cc-pts">${c.pts}★</span><span>${c.label}</span>
-     </div>`
-  ).join('');
-  return `
-    <div class="section-title" style="margin-top:4px;">⭐ Lançar Estrelas</div>
-    <div class="card">
-      <div class="form-group">
-        <label class="form-label">MEMBRO</label>
-        <select id="li-membro"><option value="">— Selecione —</option>${membOpts}</select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">MÊS DE REFERÊNCIA</label>
-        <div class="chips-wrap" id="li-meses">${mesesChips}</div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">CRITÉRIO</label>
-        <div id="li-criterios" style="display:flex;flex-direction:column;gap:7px;">${critChips}</div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">OBSERVAÇÃO (opcional)</label>
-        <textarea id="li-obs" placeholder="Ex: Post no @sellecta_oficial…"></textarea>
-      </div>
-      <button class="btn btn-gold" id="li-btn" onclick="confirmarLanceInline()">⭐ Confirmar Lançamento</button>
-    </div>`;
-}
-function selChipInline(el, wrapperId) {
-  document.getElementById(wrapperId).querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-}
-async function confirmarLanceInline() {
-  const membroId = document.getElementById('li-membro').value;
-  const mesEl    = document.querySelector('#li-meses .chip.active');
-  const critEl   = document.querySelector('#li-criterios .chip.active');
-  const obs      = document.getElementById('li-obs').value.trim().slice(0,300);
-  if (!membroId) { toast('⚠️ Selecione um membro'); return; }
-  if (!mesEl)    { toast('⚠️ Selecione o mês'); return; }
-  if (!critEl)   { toast('⚠️ Selecione o critério'); return; }
-  const mes = MESES_K[MESES.indexOf(mesEl.textContent)];
-  const criterioId = critEl.dataset.id;
-  const pts = Number(critEl.dataset.pts);
-  const btn = document.getElementById('li-btn');
-  btn.textContent = 'Salvando…'; btn.disabled = true;
-  const res = await apiFetch('lancar', { membroId, mes, criterioId, pts, obs });
-  btn.textContent = '⭐ Confirmar Lançamento'; btn.disabled = false;
-  if (res.ok) {
-    const serverId = res.data?.id || Date.now().toString();
-    const serverTs = res.data?.ts || new Date().toISOString();
-    S.lancamentos.push({ membroId, mes, criterioId, pts, obs, id: serverId, ts: serverTs });
-    const nome = S.membros.find(m=>m.id===membroId)?.nome?.split(' ')[0] || 'membro';
-    toast(`✅ +${pts}★ para ${nome}`);
-    document.getElementById('li-membro').value = '';
-    document.getElementById('li-obs').value = '';
-    document.querySelectorAll('#li-criterios .chip').forEach(c=>c.classList.remove('active'));
-    document.querySelectorAll('#li-meses .chip').forEach((c,i)=>c.classList.toggle('active', i===0));
-  } else {
-    toast('❌ Erro ao salvar lançamento. Tente novamente.');
-  }
-}
-
-// ─── HISTÓRICO ───────────────────────────────────────────────────────────────
-function renderHistorico() {
-  const mFiltro  = S.histMes || '';
-  const mbFiltro = S.histMb  || '';
-  let lista = [...S.lancamentos].reverse();
-  if (mFiltro)  lista = lista.filter(l=>l.mes===mFiltro);
-  if (mbFiltro) lista = lista.filter(l=>l.membroId===mbFiltro);
-  const mbOpts = S.membros.map(m=>`<option value="${esc(m.id)}" ${mbFiltro===m.id?'selected':''}>${esc(m.nome)}</option>`).join('');
-  const mOpts  = MESES_K.map((k,i)=>`<option value="${k}" ${mFiltro===k?'selected':''}>${MESES[i]}</option>`).join('');
-  const items = lista.length===0
-    ? `<div class="empty">Nenhum lançamento encontrado</div>`
-    : lista.map(l => {
-        const m = S.membros.find(x=>x.id===l.membroId);
-        const c = CRITERIOS.find(x=>x.id===l.criterioId);
-        const dt = new Date(l.ts).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
-        return `<div class="hist-item">
-          <div class="hist-pts">${l.pts}★</div>
-          <div class="hist-info">
-            <div class="hist-nome">${esc(m?.nome||'?')}</div>
-            <div class="hist-crit">${esc(c?.label||l.criterioId)} · ${esc(MESES[MESES_K.indexOf(l.mes)]||l.mes)}</div>
-            ${l.obs?`<div class="hist-date">${esc(l.obs)}</div>`:''}
-            <div class="hist-date">${dt}</div>
-          </div>
-          <button class="hist-del" data-id="${esc(l.id)}" onclick="removerLanceBtn(this)">✕</button>
-        </div>`;
-      }).join('');
-  return `<div class="hist-filters">
-    <select onchange="S.histMb=this.value;renderContent()" id="hf-mb"><option value="">Todos membros</option>${mbOpts}</select>
-    <select onchange="S.histMes=this.value;renderContent()" id="hf-mes"><option value="">Todos meses</option>${mOpts}</select>
-  </div>
-  <div class="card">${items}</div>`;
-}
-
-// ─── MEMBRO NOVO/EDITAR ──────────────────────────────────────────────────────
-let _roleAtual = 'membro';
-function setRole(r) {
-  _roleAtual = r;
-  document.getElementById('role-membro').classList.toggle('active',  r==='membro');
-  document.getElementById('role-gestora').classList.toggle('active', r==='gestora');
-}
-function openNovoMembro() {
-  document.getElementById('sheet-membro-title').textContent = '👤 Novo Membro';
-  document.getElementById('m-id').value = '';
-  ['nome','empresa','wpp','ig'].forEach(f=>document.getElementById('m-'+f).value='');
-  setRole('membro');
-  document.getElementById('m-btn').textContent = 'Salvar Membro';
-  openSheet('sheet-membro');
-}
-function openEditMembro(id) {
-  const m = S.membros.find(x=>x.id===id); if(!m) return;
-  document.getElementById('sheet-membro-title').textContent = '✏️ Editar Membro';
-  document.getElementById('m-id').value = m.id;
-  document.getElementById('m-nome').value    = m.nome;
-  document.getElementById('m-empresa').value = m.empresa||'';
-  document.getElementById('m-wpp').value     = m.whatsapp||'';
-  document.getElementById('m-ig').value      = m.instagram||'';
-  setRole(m.role||'membro');
-  document.getElementById('m-btn').textContent = 'Salvar Alterações';
-  openSheet('sheet-membro');
-}
-async function salvarMembro() {
-  const nome = document.getElementById('m-nome').value.trim();
-  if (!nome) { toast('⚠️ Nome obrigatório'); return; }
-  const id = document.getElementById('m-id').value;
-  const dados = {
-    id: id || 'm'+Date.now(),
-    nome: nome.slice(0,120),
-    empresa:   document.getElementById('m-empresa').value.trim().slice(0,120),
-    whatsapp:  document.getElementById('m-wpp').value.trim().slice(0,30),
-    instagram: document.getElementById('m-ig').value.trim().slice(0,60),
-    role: _roleAtual,
-  };
-  const btn = document.getElementById('m-btn');
-  btn.textContent = 'Salvando…'; btn.disabled = true;
-  const action = id ? 'editar-membro' : 'salvar-membro';
-  const res = await apiFetch(action, dados);
-  btn.textContent = id ? 'Salvar Alterações' : 'Salvar Membro'; btn.disabled = false;
-  if (res.ok) {
-    if (id) S.membros = S.membros.map(m=>m.id===id?{...m,...dados}:m);
-    else    S.membros.push(dados);
-    closeSheet('sheet-membro');
-    toast(id ? '✅ Membro atualizado' : '✅ Membro cadastrado');
-    renderContent();
-  } else {
-    toast('❌ Erro ao salvar membro. Tente novamente.');
-  }
-}
-async function removerMembroBtn(btn) {
-  const id = btn.dataset.id;
-  const m = S.membros.find(x=>x.id===id); if(!m) return;
-  if (!confirm(`Remover "${m.nome}" e todos os seus lançamentos?`)) return;
-  const res = await apiFetch('remover-membro', { id });
-  if (res.ok) {
-    S.membros     = S.membros.filter(x=>x.id!==id);
-    S.lancamentos = S.lancamentos.filter(l=>l.membroId!==id);
-    toast('🗑 Membro removido'); renderContent();
-  } else {
-    toast('❌ Erro ao remover membro. Tente novamente.');
-  }
-}
-async function removerLanceBtn(btn) {
-  const id = btn.dataset.id;
-  if (!confirm('Remover este lançamento?')) return;
-  const res = await apiFetch('remover-lance', { id });
-  if (res.ok) {
-    S.lancamentos = S.lancamentos.filter(l=>l.id!==id);
-    toast('🗑 Lançamento removido'); renderContent();
-  } else {
-    toast('❌ Erro ao remover. Tente novamente.');
-  }
-}
-
-// ─── PERFIL ──────────────────────────────────────────────────────────────────
-function openPerfil(id) {
-  const m = S.membros.find(x=>x.id===id); if(!m) return;
-  const rank   = rankingData('geral');
-  const posIdx = rank.findIndex(x=>x.id===id);
-  const pos    = m.role==='gestora' ? '—' : (posIdx >= 0 ? posIdx+1 : '—');
-  const total  = pontosMembro(id,'geral');
-  const lances = S.lancamentos.filter(l=>l.membroId===id);
-  const ini    = m.nome.charAt(0).toUpperCase();
-  const meses = MESES.map((mes,i)=>{
-    const pts = pontosMembro(id, MESES_K[i]);
-    const max = Math.max(...MESES.map((_,j)=>pontosMembro(id,MESES_K[j])),1);
-    return `<div style="margin-bottom:8px;">
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:3px;">
-        <span>${mes}</span><span>${pts}★</span>
-      </div>
-      <div class="prog-bar"><div class="prog-fill" style="width:${Math.round(pts/max*100)}%"></div></div>
-    </div>`;
-  }).join('');
-  const breakdown = CRITERIOS.map(c=>{
-    const n = lances.filter(l=>l.criterioId===c.id).length;
-    if(!n) return '';
-    return `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:12px;">
-      <span>${c.label}</span><span style="color:var(--gold)">${n}× = ${n*c.pts}★</span>
-    </div>`;
-  }).join('');
-  const ultimos = [...lances].reverse().slice(0,10).map(l=>{
-    const c  = CRITERIOS.find(x=>x.id===l.criterioId);
-    const dt = new Date(l.ts).toLocaleDateString('pt-BR');
-    return `<div class="hist-item">
-      <div class="hist-pts">${l.pts}★</div>
-      <div class="hist-info">
-        <div class="hist-crit">${esc(c?.label||l.criterioId)}</div>
-        <div class="hist-date">${esc(MESES[MESES_K.indexOf(l.mes)]||l.mes)} · ${dt}</div>
-      </div>
-    </div>`;
-  }).join('') || '<div class="empty">Sem lançamentos</div>';
-  document.getElementById('sheet-perfil-body').innerHTML = `
-    <div class="sheet-handle"></div>
-    <div style="text-align:center;margin-bottom:20px;">
-      <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--purple),#2980B9);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:600;margin:0 auto 10px;">${esc(ini)}</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;">${esc(m.nome)}</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px;">${esc(m.empresa||'—')}</div>
-    </div>
-    <div class="stats" style="margin-bottom:16px;">
-      <div class="stat"><div class="stat-v">#${pos||'—'}</div><div class="stat-l">POSIÇÃO</div></div>
-      <div class="stat"><div class="stat-v">${total}</div><div class="stat-l">ESTRELAS</div></div>
-      <div class="stat"><div class="stat-v">${lances.length}</div><div class="stat-l">LANCES</div></div>
-      <div class="stat"><div class="stat-v">${m.role==='gestora'?'Gest.':'Membro'}</div><div class="stat-l">PAPEL</div></div>
-    </div>
-    <div class="section-title">Por mês</div>
-    ${meses}
-    <div class="section-title">Por critério</div>
-    <div class="card">${breakdown||'<div class="empty">Sem pontos</div>'}</div>
-    <div class="section-title">Últimos lançamentos</div>
-    <div class="card">${ultimos}</div>
-    <button class="btn btn-outline" style="margin-top:16px;" onclick="closeSheet('sheet-perfil')">Fechar</button>
-  `;
-  openSheet('sheet-perfil');
-}
-
-// ─── SHEETS / TOAST ──────────────────────────────────────────────────────────
-function openSheet(id)  { document.getElementById(id).classList.add('show'); document.body.style.overflow='hidden'; }
-function closeSheet(id) { document.getElementById(id).classList.remove('show'); document.body.style.overflow=''; }
-document.querySelectorAll('.overlay').forEach(o=>{
-  o.addEventListener('click',e=>{ if(e.target===o) closeSheet(o.id); });
-});
-let _toastT;
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg; el.classList.add('show');
-  clearTimeout(_toastT);
-  _toastT = setTimeout(()=>el.classList.remove('show'), 3000);
-}
-
-// ─── START ───────────────────────────────────────────────────────────────────
-init();
-</script>
-</body>
-</html>
+  const membOpts = S.membros.filter(m=>m.role==='membro').map(m=>`<option value="${esc(m.id)}">${es
